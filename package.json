@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/amyavirut/airbnb-api/issues"
   },
-  "homepage": "https://github.com/amyavirut/airbnb-api#readme"
+  "homepage": "https://github.com/amyavirut/airbnb-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
