@@ -5,6 +5,7 @@ let app = express()
 
 app.get('/places', require('./controllers/getPlaces'))
 app.get('/', require('./controllers/root'))
+app.post('/places', require('./controllers/postPlaces'))
 
 
 app.listen(5000, () => {
