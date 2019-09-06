@@ -1,6 +1,6 @@
 const express = require('express')
 const database = require('./controllers/database')
-const bodyParser = ('body-parser')
+const bodyParser = require('body-parser')
 
 // Express API
 let app = express()
