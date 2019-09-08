@@ -5,8 +5,6 @@ const Type = mongoose.model('type', {
         type: String,
         required: [true, 'name is required']
     }
-
 })
-
 
 module.exports = Type
