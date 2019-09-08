@@ -38,6 +38,11 @@ const Place = mongoose.model('place', {
         type: Number,
         required: [true, 'bathroom is required']
     },
+    host: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, 'host is required'],
+        ref: "user" 
+    }
 })
 
 module.exports = Place 
