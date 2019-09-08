@@ -13,10 +13,9 @@ const User = mongoose.model('user', {
         type: String,
         required: [true, 'password is required'],
         select: false
-
     },
     location: {
-        type: String,
+        type: String, 
         required: [true, 'location is required']
     },
     avatar: {
