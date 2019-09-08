@@ -13,11 +13,14 @@ app.get('/', require('./controllers/root'))
 app.get('/places', require('./controllers/getPlaces'))
 app.get('/places/:id', require('./controllers/getPlace'))
 app.get('/types', require('./controllers/getTypes'))
+app.get('/amenities', require('./controllers/getAmenities'))
 app.post('/places', require('./controllers/postPlaces'))
 app.post('/types', require('./controllers/postType'))
 app.post('/users', require('./controllers/postUser'))
+app.post('/amenities', require('./controllers/postAmenities'))
 app.patch('/places/:id', require('./controllers/patchPlace'))
 app.delete('/places/:id', require('./controllers/deletePlace'))
+
 
 app.listen(5000, () => {
 	console.log('Ready on port 5000')
