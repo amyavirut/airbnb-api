@@ -46,6 +46,11 @@ const Place = mongoose.model('place', {
     images: [{
         type: String,
         required: [true, 'images are required']
+    }],
+    amenities: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, 'amenities are required'],
+        ref: "amenity"
     }]
 })
 
