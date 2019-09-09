@@ -42,7 +42,11 @@ const Place = mongoose.model('place', {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'host is required'],
         ref: "user" 
-    }
+    },
+    images: [{
+        type: String,
+        required: [true, 'images are required']
+    }]
 })
 
 module.exports = Place 
