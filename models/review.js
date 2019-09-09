@@ -17,6 +17,11 @@ const Review = mongoose.model('review', {
     content: {
         type: String,
         required: [true],
+    },
+    place: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true],
+        ref: "place" 
     }
 })
 
