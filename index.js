@@ -18,6 +18,7 @@ app.post('/places', require('./controllers/postPlaces'))
 app.post('/types', require('./controllers/postType'))
 app.post('/users', require('./controllers/postUser'))
 app.post('/amenities', require('./controllers/postAmenities'))
+app.post('/reviews', require('./controllers/postReviews'))
 app.patch('/places/:id', require('./controllers/patchPlace'))
 app.delete('/places/:id', require('./controllers/deletePlace'))
 

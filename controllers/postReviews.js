@@ -1,7 +1,7 @@
-const Place = require('../models/place');
+const Review = require('../models/review');
 
 module.exports = (req, res) => 
-    Place.create(req.body).then(data => {
+    Review.create(req.body).then(data => {
         res.send(data)
     }).catch(err => {
         res.send(err)

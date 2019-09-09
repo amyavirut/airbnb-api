@@ -7,7 +7,7 @@ const Review = mongoose.model('review', {
         ref: "user" 
     },
     date: {
-        type: date,
+        type: Date,
         default: Date.now
     },
     rating: {
