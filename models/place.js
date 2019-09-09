@@ -34,6 +34,10 @@ const Place = mongoose.model('place', {
         type: Number,
         required: [true, 'guests is required']
     },
+    bedrooms: {
+        type: String,
+        required: [true, 'bedrooms is required']
+    },
     bathrooms: {
         type: Number,
         required: [true, 'bathroom is required']
@@ -51,6 +55,11 @@ const Place = mongoose.model('place', {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'amenities are required'],
         ref: "amenity"
+    }],
+    reviews: [{
+        type:mongoose.Schema.Types.ObjectId,
+        required: [true, 'reviews are required'],
+        ref: "review"
     }]
 })
 
