@@ -1,9 +1,13 @@
 const express = require('express')
+const cors = require('cors')
 const database = require('./controllers/database')
 const bodyParser = require('body-parser')
 
 // Express API
 let app = express()
+// Enable CORS with origin: *
+// Allow all CORS requests from any domain
+app.use(cors())
 
 // Middle ware 
 app.use(bodyParser.urlencoded({ extended: false }))

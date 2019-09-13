@@ -57,7 +57,7 @@ const Place = mongoose.model('place', {
         ref: "amenity"
     }],
     reviews: [{
-        type:mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: [true, 'reviews are required'],
         ref: "review"
     }]

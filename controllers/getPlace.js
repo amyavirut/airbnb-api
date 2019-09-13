@@ -1,11 +1,11 @@
 const Place = require('../models/place');
 
 module.exports = (req, res) => 
-  Place.findOne({_id:req.params.id})
+  Place.findById(req.params.id)
   .populate('type')
   .populate('host','name avatar')
   .populate('amenities')
-  .populate('reviews')
+  .populate({path: 'reviews', populate: { path: 'author' }})
   .then(place => {
     place.rating = place.reviews.reduce((rating, reviews) => 
         rating + reviews.rating, 0) / place.reviews.length
