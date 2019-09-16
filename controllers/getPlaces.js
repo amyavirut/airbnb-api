@@ -1,31 +1,32 @@
 const Place = require('../models/place');
 
-// If we recieve these query parems:
-// {max_price: 200, city: "Phuket"}
-// We want to send the following query to MongoDB
-// {price: {$lte: 200}, city: "Phuket"}
-// If we get the query {price: 200, city: "Phuket"}
-// We don't want to modify this query, because it contains no
-// no special filters. i.e: max_price, min_guests, etc
+// Transforms filters into MongoDB operators.
+// Incoming HTTP Request (React/Postman) -> API (transformation happens here) -> DB
+// i.e:
+// Request query: {"minRooms":"4","maxPrice":"450","minGuests":"5"}
+// Transformed query: {"price":{"$lte":"450"},"bedrooms":{"$gte":"4"},"guests":{"$gte":"5"}}
+// Filter query params, like minRooms are removed from the transformed query
+// Because MongoDB doesn't understand them, and the logic is in the operators
 let transformQuery = (requestQuery) => {
-  console.log(requestQuery)
-  if (requestQuery.max_price) {
-    requestQuery.price = {$lte: requestQuery.max_price}
-    delete requestQuery.max_price
+  if (requestQuery.maxPrice) {
+    requestQuery.price = {$lte: requestQuery.maxPrice}
+    delete requestQuery.maxPrice
   }
-  if (requestQuery.min_rooms) {
-    requestQuery.bedrooms = {$gte: requestQuery.min_rooms}
-    delete requestQuery.min_rooms
+  if (requestQuery.minRooms) {
+    requestQuery.bedrooms = {$gte: requestQuery.minRooms}
+    delete requestQuery.minRooms
   }
-  if (requestQuery.min_guests) {
-    requestQuery.guests = {$gte: requestQuery.min_guests}
-    delete requestQuery.min_guests
+  if (requestQuery.minGuests) {
+    requestQuery.guests = {$gte: requestQuery.minGuests}
+    delete requestQuery.minGuests
   }
   return requestQuery
 }
 
 module.exports = (req, res) => {
+  console.log(`Request query: ${JSON.stringify(req.query)}`)
   let transformedQuery = transformQuery(req.query)
+  console.log(`Transformed query: ${JSON.stringify(transformedQuery)}`)
   Place.find(transformedQuery)
     .populate('type')
     .populate('host')
