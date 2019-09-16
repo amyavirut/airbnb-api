@@ -34,6 +34,7 @@ app.post('/amenities', require('./controllers/postAmenities'))
 app.get('/reviews', require('./controllers/getReviews'))
 app.post('/reviews', require('./controllers/postReviews'))
 app.post('/users', require('./controllers/postUser'))
+app.post('/signup', require('./controllers/postSignup'))
 
 
 app.listen(process.env.PORT, () => {
