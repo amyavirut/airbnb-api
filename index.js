@@ -1,7 +1,15 @@
 const express = require('express')
 const cors = require('cors')
-const database = require('./controllers/database')
 const bodyParser = require('body-parser')
+
+// Setup env
+// Takes all settings from .env file and adds them to process.env
+// Which is an object of VAR = VALUE
+require('dotenv').config()
+
+// Connect to database
+// We do this after dotenv because it needs to use settings from .env
+require('./controllers/database')
 
 // Express API
 let app = express()
@@ -28,6 +36,6 @@ app.post('/reviews', require('./controllers/postReviews'))
 app.post('/users', require('./controllers/postUser'))
 
 
-app.listen(5000, () => {
-	console.log('Ready on port 5000')
+app.listen(process.env.PORT, () => {
+	console.log(`Listening on port: ${process.env.PORT}`) 
 })
