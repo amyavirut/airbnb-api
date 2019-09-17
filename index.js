@@ -35,7 +35,7 @@ app.get('/reviews', require('./controllers/getReviews'))
 app.post('/reviews', require('./controllers/postReviews'))
 app.post('/users', require('./controllers/postUser'))
 app.post('/signup', require('./controllers/postSignup'))
-
+app.post('/pay', require('./controllers/postPay'))
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on port: ${process.env.PORT}`) 
